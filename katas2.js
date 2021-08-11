@@ -9,21 +9,34 @@ console.assert(add(3, 5) === 8, 'A função add não está funcionando como espe
 
 // comece a criar a sua função multiply na linha abaixo
 function multiply(num1, num2){
-    let final // Start the variable
-    if(num2 < 0){ // If num2 is negative..
-        final = 0
-        for(let i = -1; i >= num2; i--){
-            final = add(final, num1)
-        }
-        return -final // Return the negative of final
-    } else if(num2 >= 0){ // If num2 is positive ...
-        final = 0
-        for(let i = 0;  i < num2; i++){
-            final = add(final, num1)
-        }
-        return final
+    if(num1 === 0 || num2 === 0){
+        return 0
     }
-
+    let amount
+    let negative
+    if(num2 > 0){                                           // 1st - num2 is positive.
+        amount = 0
+        for(let i = 1; i <= num2; i++){
+            amount = add(amount, num1)
+        }
+        return amount
+    } else if (num2 < 0){                                   // 2nd - num2 is negative.
+        amount = 0
+        negative = 0
+        for(let i = -1; i >= num2; i--){
+            amount = add(amount, num1)
+        }
+        if(amount > 0){
+            for(let i = 1; i <= amount; i++){               // Multiply by -1.
+                negative = add(negative, -1)
+            }
+        } else if(amount < 0){
+            for(let i = -1; i >= amount; i--){              // Multiply by -1.
+                negative = add(negative, 1)
+            }
+        }
+        return negative
+    }
 }
 
 // descomente a linha seguinte para testar sua função
