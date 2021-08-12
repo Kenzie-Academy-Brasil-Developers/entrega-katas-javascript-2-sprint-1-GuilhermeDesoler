@@ -68,9 +68,9 @@ function factorial(num){
     if(num === 0){ // 1st by definition,factorial of zero iquals one.
         return 1
     }
-    let final = num //  2nd factorial of one.
-    for(num; num-1 >= 1; num--){ // If num is different than one ...
-        final = multiply(final, num-1) // Do the multiply function.
+    let final = 1 //  2nd factorial of one.
+    for(num; num >= 1; num--){ // If num is different than one ...
+        final = multiply(final, num) // Do the multiply function.
     }
     return final
 }
